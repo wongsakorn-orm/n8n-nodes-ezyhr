@@ -515,7 +515,7 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 # Clone the repository
 
-git clone https://github.com/orisma/n8n-nodes-ezyhr.git
+git clone https://github.com/wongsakorn-orm/n8n-nodes-ezyhr.git
 
 # Install dependencies
 
@@ -566,8 +566,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support with this n8n community node:
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/orisma/n8n-nodes-ezyhr/issues)
-- **GitHub Discussions**: [Community discussions and Q&A](https://github.com/orisma/n8n-nodes-ezyhr/discussions)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/issues)
+- **GitHub Discussions**: [Community discussions and Q&A](https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/discussions)
 - **n8n Community**: [General n8n support](https://community.n8n.io)
 
 For EzyHR API support:

@@ -6,18 +6,19 @@ import type {
   IDataObject,
   IHttpRequestOptions,
   IHttpRequestMethods,
+  Icon,
 } from "n8n-workflow";
 
 export class EzyHr implements INodeType {
   description: INodeTypeDescription = {
     displayName: "EzyHR",
     name: "ezyHr",
-    icon: "file:ezyhr.svg",
+    icon: "file:ezyhr.svg" as Icon,
     group: ["transform"],
     version: 1,
     subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
     description:
-      "Comprehensive EzyHR API integration for HR management operations",
+      "Comprehensive EzyHR API integration for HR management operations with AI capabilities",
     defaults: {
       name: "EzyHR",
     },
@@ -36,6 +37,27 @@ export class EzyHr implements INodeType {
         "Content-Type": "application/json",
       },
     },
+    usableAsTool: true,
+    codex: {
+      categories: ["AI", "HR", "API"],
+      subcategories: {
+        AI: ["Tools", "Agents"],
+        HR: ["Management", "Automation"],
+        API: ["Integration", "REST"],
+      },
+      resources: {
+        primaryDocumentation: [
+          {
+            url: "https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/blob/main/README.md",
+          },
+        ],
+        credentialDocumentation: [
+          {
+            url: "https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/blob/main/README.md#credentials",
+          },
+        ],
+      },
+    },
     properties: [
       {
         displayName: "Mode",
@@ -51,7 +73,8 @@ export class EzyHr implements INodeType {
           {
             name: "AI Autonomous",
             value: "autonomous",
-            description: "Let AI determine and execute actions based on input",
+            description:
+              "Let AI determine and execute actions based on natural language input",
           },
         ],
         default: "predefined",
@@ -814,6 +837,8 @@ export class EzyHr implements INodeType {
         default: "",
         placeholder:
           'e.g., "Get all employees in IT department with pending leave requests" or "Create overtime request for 8 hours"',
+        description:
+          "Natural language instruction for AI to determine and execute HR operations",
       },
       {
         displayName: "Context Data",
@@ -2409,5 +2434,4 @@ function generateSummary(results: any[]): string {
   return summary;
 }
 
-// เพิ่มบรรทัดนี้ที่ท้ายไฟล์ หลังจาก function generateSummary
 export default EzyHr;

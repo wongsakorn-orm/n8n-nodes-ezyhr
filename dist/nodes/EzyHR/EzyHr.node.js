@@ -10,7 +10,7 @@ class EzyHr {
             group: ["transform"],
             version: 1,
             subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-            description: "Comprehensive EzyHR API integration for HR management operations",
+            description: "Comprehensive EzyHR API integration for HR management operations with AI capabilities",
             defaults: {
                 name: "EzyHR",
             },
@@ -29,6 +29,27 @@ class EzyHr {
                     "Content-Type": "application/json",
                 },
             },
+            usableAsTool: true,
+            codex: {
+                categories: ["AI", "HR", "API"],
+                subcategories: {
+                    AI: ["Tools", "Agents"],
+                    HR: ["Management", "Automation"],
+                    API: ["Integration", "REST"],
+                },
+                resources: {
+                    primaryDocumentation: [
+                        {
+                            url: "https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/blob/main/README.md",
+                        },
+                    ],
+                    credentialDocumentation: [
+                        {
+                            url: "https://github.com/wongsakorn-orm/n8n-nodes-ezyhr/blob/main/README.md#credentials",
+                        },
+                    ],
+                },
+            },
             properties: [
                 {
                     displayName: "Mode",
@@ -43,7 +64,7 @@ class EzyHr {
                         {
                             name: "AI Autonomous",
                             value: "autonomous",
-                            description: "Let AI determine and execute actions based on input",
+                            description: "Let AI determine and execute actions based on natural language input",
                         },
                     ],
                     default: "predefined",
@@ -787,6 +808,7 @@ class EzyHr {
                     },
                     default: "",
                     placeholder: 'e.g., "Get all employees in IT department with pending leave requests" or "Create overtime request for 8 hours"',
+                    description: "Natural language instruction for AI to determine and execute HR operations",
                 },
                 {
                     displayName: "Context Data",
