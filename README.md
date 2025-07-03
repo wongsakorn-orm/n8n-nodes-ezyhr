@@ -172,66 +172,66 @@ The AI Autonomous mode provides sophisticated natural language processing for co
 
 #### **Employee Management**
 
-\`\`\`
+```
 "Find all employees in the marketing department hired after 2023"
 "Get active staff members with pending training requirements"
 "Search for employees with specific skills or certifications"
 "Update contact information for all IT department employees"
 "Create employee profiles for 5 new hires with department assignments"
-\`\`\`
+```
 
 #### **Leave & Request Processing**
 
-\`\`\`
+```
 "Create a 5-day annual leave request for John Doe from March 1-5"
 "Approve all pending leave requests for the IT department this week"
 "Submit 8 hours of overtime for employee ID 123 for last Friday"
 "Get all rejected requests from this quarter and prepare follow-up reports"
 "Show me how many leave requests are waiting for approval by department"
-\`\`\`
+```
 
 #### **Attendance & Time Management**
 
-\`\`\`
+```
 "Get abnormal attendance records for this month with detailed breakdown"
 "Find employees with irregular check-in patterns in the last 30 days"
 "Generate attendance summary report for all department managers"
 "Identify employees with excessive late arrivals this quarter"
-\`\`\`
+```
 
 #### **Analytics & Reporting**
 
-\`\`\`
+```
 "Generate comprehensive monthly HR dashboard with leave statistics"
 "Show me department-wise absence trends for the current year"
 "Create sick leave pattern analysis for the last 6 months"
 "Prepare payroll summary report for all departments this period"
 "Get training completion rates by department and course type"
-\`\`\`
+```
 
 #### **Training & Development**
 
-\`\`\`
+```
 "Enroll all IT staff in the new cybersecurity training course"
 "Get list of employees who completed mandatory safety training"
 "Show curriculum categories and available professional development courses"
 "Create training schedule for new employee onboarding program"
-\`\`\`
+```
 
 #### **Bulk Operations & Automation**
 
-\`\`\`
+```
 "Update all employees in sales department with new manager assignment"
 "Import leave requests from the uploaded CSV file with validation"
 "Send reminder emails for all pending overtime requests"
 "Process all approved leave requests and update employee balances"
-\`\`\`
+```
 
 ### **Complex Workflow Examples**
 
 #### **Complete Employee Onboarding**
 
-\`\`\`
+```
 Instruction: "Set up new employee Sarah Johnson in Marketing with standard training and initial setup"
 
 AI Execution Plan:
@@ -245,11 +245,11 @@ AI Execution Plan:
 7. Send welcome email with login credentials and first-day information
 8. Generate employee handbook and ID card request
 9. Schedule orientation meetings with HR and department manager
-   \`\`\`
+```
 
 #### **Monthly HR Analytics Dashboard**
 
-\`\`\`
+```
 Instruction: "Prepare comprehensive monthly HR report for executive team"
 
 AI Execution Plan:
@@ -263,11 +263,11 @@ AI Execution Plan:
 7. Create executive dashboard with key HR metrics
 8. Send automated report to management team
 9. Schedule follow-up meetings for areas needing attention
-   \`\`\`
+```
 
 #### **Leave Management Automation**
 
-\`\`\`
+```
 Instruction: "Process all pending leave requests, auto-approve policy-compliant ones, and notify employees"
 
 AI Execution Plan:
@@ -281,7 +281,7 @@ AI Execution Plan:
 7. Update leave balances and calendar systems
 8. Generate approval summary report with statistics
 9. Create alerts for requests requiring special attention
-   \`\`\`
+```
 
 ---
 
@@ -353,90 +353,90 @@ You will need **EzyHR API credentials** to use this node.
 
 Perfect for controlled, predictable operations with full parameter control:
 
-\`\`\`json
+```json
 {
-"mode": "predefined",
-"resource": "people",
-"operation": "search",
-"additionalFields": {
-"departmentId": "IT",
-"status": "active",
-"keyword": "developer",
-"limit": 50,
-"page": 1
+  "mode": "predefined",
+  "resource": "people",
+  "operation": "search",
+  "additionalFields": {
+    "departmentId": "IT",
+    "status": "active",
+    "keyword": "developer",
+    "limit": 50,
+    "page": 1
+  }
 }
-}
-\`\`\`
+```
 
 ### **AI Autonomous Mode**
 
 Ideal for complex, intelligent operations using natural language:
 
-\`\`\`json
+```json
 {
-"mode": "autonomous",
-"aiInstruction": "Get all active employees in the IT department who have pending leave requests this month and send them reminder emails about policy compliance",
-"contextData": {
-"department": "IT",
-"includeRequests": true,
-"timeframe": "current_month",
-"sendNotifications": true,
-"policyCheck": true
+  "mode": "autonomous",
+  "aiInstruction": "Get all active employees in the IT department who have pending leave requests this month and send them reminder emails about policy compliance",
+  "contextData": {
+    "department": "IT",
+    "includeRequests": true,
+    "timeframe": "current_month",
+    "sendNotifications": true,
+    "policyCheck": true
+  }
 }
-}
-\`\`\`
+```
 
 ### **Advanced Usage Examples**
 
 #### **Employee Search with Complex Filters**
 
-\`\`\`json
+```json
 {
-"resource": "people",
-"operation": "search",
-"additionalFields": {
-"departmentId": "SALES",
-"status": "active",
-"keyword": "manager",
-"limit": 25
-},
-"dateRange": {
-"start": "2023-01-01",
-"end": "2024-12-31"
+  "resource": "people",
+  "operation": "search",
+  "additionalFields": {
+    "departmentId": "SALES",
+    "status": "active",
+    "keyword": "manager",
+    "limit": 25
+  },
+  "dateRange": {
+    "start": "2023-01-01",
+    "end": "2024-12-31"
+  }
 }
-}
-\`\`\`
+```
 
 #### **Bulk Leave Request Processing**
 
-\`\`\`json
+```json
 {
-"resource": "request",
-"operation": "importLeave",
-"data": {
-"file": "leave_requests_march_2024.csv",
-"validateOnly": false,
-"autoApprove": false,
-"notifyEmployees": true
+  "resource": "request",
+  "operation": "importLeave",
+  "data": {
+    "file": "leave_requests_march_2024.csv",
+    "validateOnly": false,
+    "autoApprove": false,
+    "notifyEmployees": true
+  }
 }
-}
-\`\`\`
+```
 
 #### **Training Enrollment Management**
 
-\`\`\`json
+```json
 {
-"resource": "training",
-"operation": "enroll",
-"data": {
-"courseId": "SAFETY_101",
-"employeeIds": ["EMP001", "EMP002", "EMP003"],
-"enrollmentDate": "2024-01-15",
-"deadline": "2024-02-15",
-"mandatory": true
+  "resource": "training",
+  "operation": "enroll",
+  "data": {
+    "courseId": "SAFETY_101",
+    "employeeIds": ["EMP001", "EMP002", "EMP003"],
+    "enrollmentDate": "2024-01-15",
+    "deadline": "2024-02-15",
+    "mandatory": true
+  }
 }
-}
-\`\`\`
+```
 
 ---
 
@@ -511,7 +511,7 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 ### **Development Setup**
 
-\`\`\`bash
+```bash
 
 # Clone the repository
 
@@ -532,7 +532,7 @@ npm test
 # Build for production
 
 npm run build
-\`\`\`
+```
 
 ---
 
