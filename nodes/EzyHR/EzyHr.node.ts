@@ -16,7 +16,8 @@ export class EzyHR implements INodeType {
     group: ["transform"],
     version: 1,
     subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-    description: "Interact with EzyHR API for HR management operations",
+    description:
+      "Comprehensive EzyHR API integration for HR management operations",
     defaults: {
       name: "EzyHR",
     },
@@ -68,12 +69,28 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
+            name: "Account",
+            value: "account",
+          },
+          {
             name: "Configuration",
             value: "configuration",
           },
           {
             name: "Dashboard",
             value: "dashboard",
+          },
+          {
+            name: "Department",
+            value: "department",
+          },
+          {
+            name: "Leave Type",
+            value: "leaveType",
+          },
+          {
+            name: "License",
+            value: "license",
           },
           {
             name: "Person",
@@ -91,9 +108,14 @@ export class EzyHR implements INodeType {
             name: "Training",
             value: "training",
           },
+          {
+            name: "User",
+            value: "user",
+          },
         ],
         default: "people",
       },
+      // People Operations
       {
         displayName: "Operation",
         name: "operation",
@@ -107,32 +129,39 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
-            name: "Get",
-            value: "get",
-            description: "Get people information",
-            action: "Get people information",
-          },
-          {
             name: "Create",
             value: "create",
-            description: "Create a new person",
             action: "Create a new person",
           },
           {
-            name: "Update",
-            value: "update",
-            description: "Update person information",
-            action: "Update person information",
+            name: "Delete",
+            value: "delete",
+            action: "Delete a person",
+          },
+          {
+            name: "Get",
+            value: "get",
+            action: "Get person information",
           },
           {
             name: "List",
             value: "list",
-            description: "List all people",
             action: "List all people",
+          },
+          {
+            name: "Search",
+            value: "search",
+            action: "Search people",
+          },
+          {
+            name: "Update",
+            value: "update",
+            action: "Update person information",
           },
         ],
         default: "get",
       },
+      // Request Operations
       {
         displayName: "Operation",
         name: "operation",
@@ -146,30 +175,398 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
+            name: "Approve Request",
+            value: "approve",
+            action: "Approve a request",
+          },
+          {
             name: "Create Leave Request",
             value: "createLeave",
-            description: "Create a leave request",
             action: "Create a leave request",
           },
           {
             name: "Create Overtime Request",
             value: "createOvertime",
-            description: "Create an overtime request",
             action: "Create an overtime request",
           },
           {
-            name: "Get Request Status",
-            value: "getStatus",
-            action: "Get request status",
+            name: "Get Request",
+            value: "get",
+            action: "Get request details",
           },
           {
-            name: "Import Requests",
-            value: "import",
-            action: "Import requests from file",
+            name: "Import Leave Requests",
+            value: "importLeave",
+            action: "Import leave requests from file",
+          },
+          {
+            name: "Import Overtime Requests",
+            value: "importOvertime",
+            action: "Import overtime requests from file",
+          },
+          {
+            name: "List Requests",
+            value: "list",
+            action: "List all requests",
+          },
+          {
+            name: "Reject Request",
+            value: "reject",
+            action: "Reject a request",
           },
         ],
         default: "createLeave",
       },
+      // Dashboard Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["dashboard"],
+          },
+        },
+        options: [
+          {
+            name: "Get Absent Data",
+            value: "absentData",
+            action: "Get absent data",
+          },
+          {
+            name: "Get Account Details",
+            value: "accountDetail",
+            action: "Get account details",
+          },
+          {
+            name: "Get Dashboard Data",
+            value: "get",
+            action: "Get dashboard statistics",
+          },
+          {
+            name: "Get Leave Summary",
+            value: "leaveSummary",
+            action: "Get leave summary data",
+          },
+          {
+            name: "Get Sick Leave Data",
+            value: "sickData",
+            action: "Get sick leave data",
+          },
+        ],
+        default: "get",
+      },
+      // Configuration Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["configuration"],
+          },
+        },
+        options: [
+          {
+            name: "Create",
+            value: "create",
+            action: "Create configuration",
+          },
+          {
+            name: "Delete",
+            value: "delete",
+            action: "Delete configuration",
+          },
+          {
+            name: "Get",
+            value: "get",
+            action: "Get configuration",
+          },
+          {
+            name: "List",
+            value: "list",
+            action: "List configurations",
+          },
+          {
+            name: "Update",
+            value: "update",
+            action: "Update configuration",
+          },
+        ],
+        default: "get",
+      },
+      // User Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["user"],
+          },
+        },
+        options: [
+          {
+            name: "Change Password",
+            value: "changePassword",
+            action: "Change user password",
+          },
+          {
+            name: "Get Profile",
+            value: "getProfile",
+            action: "Get user profile",
+          },
+          {
+            name: "Get Settings",
+            value: "getSettings",
+            action: "Get user settings",
+          },
+          {
+            name: "Renew Token",
+            value: "renewToken",
+            action: "Renew authentication token",
+          },
+          {
+            name: "Update Profile",
+            value: "updateProfile",
+            action: "Update user profile",
+          },
+          {
+            name: "Update Settings",
+            value: "updateSettings",
+            action: "Update user settings",
+          },
+        ],
+        default: "getProfile",
+      },
+      // Department Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["department"],
+          },
+        },
+        options: [
+          {
+            name: "Create",
+            value: "create",
+            action: "Create department",
+          },
+          {
+            name: "Delete",
+            value: "delete",
+            action: "Delete department",
+          },
+          {
+            name: "Get",
+            value: "get",
+            action: "Get department",
+          },
+          {
+            name: "List",
+            value: "list",
+            action: "List departments",
+          },
+          {
+            name: "Update",
+            value: "update",
+            action: "Update department",
+          },
+        ],
+        default: "list",
+      },
+      // Training Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["training"],
+          },
+        },
+        options: [
+          {
+            name: "Create Course",
+            value: "createCourse",
+            action: "Create training course",
+          },
+          {
+            name: "Delete Course",
+            value: "deleteCourse",
+            action: "Delete training course",
+          },
+          {
+            name: "Enroll",
+            value: "enroll",
+            action: "Enroll in training course",
+          },
+          {
+            name: "Get Course",
+            value: "getCourse",
+            action: "Get training course",
+          },
+          {
+            name: "List Courses",
+            value: "listCourses",
+            action: "List training courses",
+          },
+          {
+            name: "Update Course",
+            value: "updateCourse",
+            action: "Update training course",
+          },
+        ],
+        default: "listCourses",
+      },
+      // Leave Type Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["leaveType"],
+          },
+        },
+        options: [
+          {
+            name: "Create",
+            value: "create",
+            action: "Create leave type",
+          },
+          {
+            name: "Delete",
+            value: "delete",
+            action: "Delete leave type",
+          },
+          {
+            name: "Get",
+            value: "get",
+            action: "Get leave type",
+          },
+          {
+            name: "List",
+            value: "list",
+            action: "List leave types",
+          },
+          {
+            name: "Update",
+            value: "update",
+            action: "Update leave type",
+          },
+        ],
+        default: "list",
+      },
+      // Account Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["account"],
+          },
+        },
+        options: [
+          {
+            name: "Switch Account",
+            value: "switch",
+            action: "Switch to different account",
+          },
+          {
+            name: "Get Account Info",
+            value: "getInfo",
+            action: "Get account information",
+          },
+        ],
+        default: "getInfo",
+      },
+      // Sites Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["sites"],
+          },
+        },
+        options: [
+          {
+            name: "Create",
+            value: "create",
+            action: "Create new site",
+          },
+          {
+            name: "Delete",
+            value: "delete",
+            action: "Delete site",
+          },
+          {
+            name: "Get",
+            value: "get",
+            action: "Get site information",
+          },
+          {
+            name: "List",
+            value: "list",
+            action: "List all sites",
+          },
+          {
+            name: "Update",
+            value: "update",
+            action: "Update site information",
+          },
+        ],
+        default: "list",
+      },
+      // License Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["license"],
+          },
+        },
+        options: [
+          {
+            name: "Add People License",
+            value: "addPeople",
+            action: "Add people license",
+          },
+          {
+            name: "Get License Info",
+            value: "getInfo",
+            action: "Get license information",
+          },
+        ],
+        default: "getInfo",
+      },
+      // AI Instruction
       {
         displayName: "AI Instruction",
         name: "aiInstruction",
@@ -181,7 +578,7 @@ export class EzyHR implements INodeType {
         },
         default: "",
         placeholder:
-          'e.g., "Get all employees in the IT department" or "Create a leave request for John Doe"',
+          'e.g., "Get all employees in IT department with pending leave requests" or "Create overtime request for 8 hours"',
       },
       {
         displayName: "Context Data",
@@ -195,46 +592,146 @@ export class EzyHR implements INodeType {
         default: "{}",
         description: "Additional context data to help AI make decisions",
       },
+      // Resource-specific parameters
       {
-        displayName: "People ID",
-        name: "peopleId",
+        displayName: "Resource ID",
+        name: "resourceId",
         type: "string",
         displayOptions: {
           show: {
             mode: ["predefined"],
-            resource: ["people"],
-            operation: ["get", "update"],
+            resource: [
+              "people",
+              "department",
+              "training",
+              "sites",
+              "leaveType",
+              "configuration",
+            ],
+            operation: ["get", "update", "delete"],
           },
         },
         default: "",
+        description: "The ID of the resource",
       },
       {
-        displayName: "People Data",
-        name: "peopleData",
-        type: "json",
-        displayOptions: {
-          show: {
-            mode: ["predefined"],
-            resource: ["people"],
-            operation: ["create", "update"],
-          },
-        },
-        default: "{}",
-        description: "The people data to create or update",
-      },
-      {
-        displayName: "Request Data",
-        name: "requestData",
-        type: "json",
+        displayName: "Request ID",
+        name: "requestId",
+        type: "string",
         displayOptions: {
           show: {
             mode: ["predefined"],
             resource: ["request"],
-            operation: ["createLeave", "createOvertime"],
+            operation: ["get", "approve", "reject"],
+          },
+        },
+        default: "",
+        description: "The ID of the request",
+      },
+      {
+        displayName: "Dashboard Mode",
+        name: "dashboardMode",
+        type: "options",
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["dashboard"],
+            operation: ["get"],
+          },
+        },
+        options: [
+          {
+            name: "Account Detail",
+            value: "account_detail",
+          },
+          {
+            name: "Leave Summary",
+            value: "leave_summary",
+          },
+          {
+            name: "Absent Data",
+            value: "absent_data",
+          },
+          {
+            name: "Sick Data",
+            value: "sick_data",
+          },
+        ],
+        default: "account_detail",
+      },
+      {
+        displayName: "Configuration Group",
+        name: "configGroup",
+        type: "options",
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["configuration"],
+          },
+        },
+        options: [
+          {
+            name: "Company",
+            value: "COMPANY",
+          },
+          {
+            name: "System",
+            value: "SYSTEM",
+          },
+          {
+            name: "User",
+            value: "USER",
+          },
+        ],
+        default: "COMPANY",
+      },
+      {
+        displayName: "Data",
+        name: "data",
+        type: "json",
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            operation: [
+              "create",
+              "update",
+              "createLeave",
+              "createOvertime",
+              "enroll",
+            ],
           },
         },
         default: "{}",
-        description: "The request data to create",
+        description: "The data to send with the request",
+      },
+      {
+        displayName: "Date Range",
+        name: "dateRange",
+        type: "collection",
+        placeholder: "Add Date Range",
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["dashboard", "request"],
+          },
+        },
+        default: {},
+        options: [
+          {
+            displayName: "Start Date",
+            name: "start",
+            type: "dateTime",
+            default: "",
+            description: "Start date for the query",
+          },
+          {
+            displayName: "End Date",
+            name: "end",
+            type: "dateTime",
+            default: "",
+            description: "End date for the query",
+          },
+        ],
       },
       {
         displayName: "Additional Fields",
@@ -244,11 +741,25 @@ export class EzyHR implements INodeType {
         default: {},
         options: [
           {
-            displayName: "Page",
-            name: "page",
-            type: "number",
-            default: 1,
-            description: "Page number for pagination",
+            displayName: "Department ID",
+            name: "departmentId",
+            type: "string",
+            default: "",
+            description: "Filter by department ID",
+          },
+          {
+            displayName: "Full Staff ID",
+            name: "fullstaffId",
+            type: "string",
+            default: "",
+            description: "Full staff ID for filtering",
+          },
+          {
+            displayName: "Keyword",
+            name: "keyword",
+            type: "string",
+            default: "",
+            description: "Search keyword",
           },
           {
             displayName: "Limit",
@@ -261,11 +772,40 @@ export class EzyHR implements INodeType {
             description: "Max number of results to return",
           },
           {
-            displayName: "Keyword",
-            name: "keyword",
-            type: "string",
-            default: "",
-            description: "Search keyword",
+            displayName: "Page",
+            name: "page",
+            type: "number",
+            default: 1,
+            description: "Page number for pagination",
+          },
+          {
+            displayName: "Status",
+            name: "status",
+            type: "options",
+            options: [
+              {
+                name: "Active",
+                value: "active",
+              },
+              {
+                name: "Approved",
+                value: "approved",
+              },
+              {
+                name: "Inactive",
+                value: "inactive",
+              },
+              {
+                name: "Pending",
+                value: "pending",
+              },
+              {
+                name: "Rejected",
+                value: "rejected",
+              },
+            ],
+            default: "active",
+            description: "Filter by status",
           },
         ],
       },
@@ -323,8 +863,7 @@ async function executePredefinedAction(
   // Build request based on resource and operation
   switch (resource) {
     case "people":
-      endpoint = buildPeopleEndpoint(this, operation, itemIndex);
-      ({ method, body, qs } = buildPeopleRequest(
+      ({ endpoint, method, body, qs } = await buildPeopleRequest(
         this,
         operation,
         itemIndex,
@@ -332,8 +871,7 @@ async function executePredefinedAction(
       ));
       break;
     case "request":
-      endpoint = buildRequestEndpoint(this, operation, itemIndex);
-      ({ method, body, qs } = buildRequestRequest(
+      ({ endpoint, method, body, qs } = await buildRequestRequest(
         this,
         operation,
         itemIndex,
@@ -341,20 +879,76 @@ async function executePredefinedAction(
       ));
       break;
     case "dashboard":
-      endpoint = "/dashboard";
-      qs = { mode: "account_detail", ...additionalFields };
+      ({ endpoint, method, body, qs } = await buildDashboardRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
       break;
     case "configuration":
-      endpoint = "/config";
-      qs = { group: "COMPANY", ...additionalFields };
+      ({ endpoint, method, body, qs } = await buildConfigurationRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "user":
+      ({ endpoint, method, body, qs } = await buildUserRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "department":
+      ({ endpoint, method, body, qs } = await buildDepartmentRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
       break;
     case "training":
-      endpoint = "/training/courses";
-      qs = additionalFields;
+      ({ endpoint, method, body, qs } = await buildTrainingRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "leaveType":
+      ({ endpoint, method, body, qs } = await buildLeaveTypeRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "account":
+      ({ endpoint, method, body, qs } = await buildAccountRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
       break;
     case "sites":
-      endpoint = "/site";
-      qs = additionalFields;
+      ({ endpoint, method, body, qs } = await buildSitesRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "license":
+      ({ endpoint, method, body, qs } = await buildLicenseRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
       break;
   }
 
@@ -404,7 +998,7 @@ async function executeAutonomousAction(
     itemIndex
   ) as IDataObject;
 
-  // AI logic to determine actions
+  // Enhanced AI logic to determine actions
   const actionPlan = analyzeInstruction(aiInstruction, contextData);
 
   // Execute the planned actions
@@ -463,49 +1057,150 @@ async function executeAutonomousAction(
   };
 }
 
+// Enhanced AI instruction analysis
 function analyzeInstruction(instruction: string, context: IDataObject): any {
-  // AI logic to parse instruction and create action plan
   const lowerInstruction = instruction.toLowerCase();
   const actions = [];
 
-  // Pattern matching for common EzyHR operations
+  // Enhanced pattern matching for EzyHR operations
+
+  // People operations
   if (
-    lowerInstruction.includes("get") &&
-    lowerInstruction.includes("employee")
+    lowerInstruction.includes("employee") ||
+    lowerInstruction.includes("staff") ||
+    lowerInstruction.includes("people")
+  ) {
+    if (
+      lowerInstruction.includes("get") ||
+      lowerInstruction.includes("find") ||
+      lowerInstruction.includes("search")
+    ) {
+      actions.push({
+        name: "Search People",
+        resource: "people",
+        operation: "search",
+        method: "GET",
+        endpoint: "/people",
+        qs: extractFilters(instruction),
+      });
+    }
+    if (
+      lowerInstruction.includes("create") ||
+      lowerInstruction.includes("add")
+    ) {
+      actions.push({
+        name: "Create Person",
+        resource: "people",
+        operation: "create",
+        method: "POST",
+        endpoint: "/people",
+        body: extractPersonData(instruction, context),
+      });
+    }
+  }
+
+  // Leave requests
+  if (lowerInstruction.includes("leave")) {
+    if (
+      lowerInstruction.includes("create") ||
+      lowerInstruction.includes("submit")
+    ) {
+      actions.push({
+        name: "Create Leave Request",
+        resource: "request",
+        operation: "createLeave",
+        method: "POST",
+        endpoint: "/request/leave",
+        body: extractLeaveData(instruction, context),
+      });
+    }
+    if (lowerInstruction.includes("approve")) {
+      actions.push({
+        name: "Approve Leave Request",
+        resource: "request",
+        operation: "approve",
+        method: "PUT",
+        endpoint: "/request/approve",
+        body: { requestId: extractRequestId(instruction, context) },
+      });
+    }
+  }
+
+  // Overtime requests
+  if (
+    lowerInstruction.includes("overtime") ||
+    lowerInstruction.includes("ot")
+  ) {
+    if (
+      lowerInstruction.includes("create") ||
+      lowerInstruction.includes("submit")
+    ) {
+      actions.push({
+        name: "Create Overtime Request",
+        resource: "request",
+        operation: "createOvertime",
+        method: "POST",
+        endpoint: "/request/overtime",
+        body: extractOvertimeData(instruction, context),
+      });
+    }
+  }
+
+  // Dashboard queries
+  if (
+    lowerInstruction.includes("dashboard") ||
+    lowerInstruction.includes("summary") ||
+    lowerInstruction.includes("report")
   ) {
     actions.push({
-      name: "Get People List",
-      resource: "people",
-      operation: "list",
+      name: "Get Dashboard Data",
+      resource: "dashboard",
+      operation: "get",
       method: "GET",
-      endpoint: "/people",
-      qs: extractFilters(instruction),
+      endpoint: "/dashboard",
+      qs: { mode: "account_detail", ...extractDateRange(instruction) },
     });
   }
 
+  // Department operations
+  if (lowerInstruction.includes("department")) {
+    if (lowerInstruction.includes("list") || lowerInstruction.includes("get")) {
+      actions.push({
+        name: "List Departments",
+        resource: "department",
+        operation: "list",
+        method: "GET",
+        endpoint: "/department",
+        qs: extractFilters(instruction),
+      });
+    }
+  }
+
+  // Training operations
   if (
-    lowerInstruction.includes("create") &&
-    lowerInstruction.includes("leave")
+    lowerInstruction.includes("training") ||
+    lowerInstruction.includes("course")
   ) {
-    actions.push({
-      name: "Create Leave Request",
-      resource: "request",
-      operation: "createLeave",
-      method: "POST",
-      endpoint: "/request/leave",
-      body: extractLeaveData(instruction, context),
-    });
-  }
-
-  if (lowerInstruction.includes("overtime")) {
-    actions.push({
-      name: "Create Overtime Request",
-      resource: "request",
-      operation: "createOvertime",
-      method: "POST",
-      endpoint: "/request/overtime",
-      body: extractOvertimeData(instruction, context),
-    });
+    if (lowerInstruction.includes("list") || lowerInstruction.includes("get")) {
+      actions.push({
+        name: "List Training Courses",
+        resource: "training",
+        operation: "listCourses",
+        method: "GET",
+        endpoint: "/training/courses",
+        qs: extractFilters(instruction),
+      });
+    }
+    if (lowerInstruction.includes("enroll")) {
+      actions.push({
+        name: "Enroll in Training",
+        resource: "training",
+        operation: "enroll",
+        method: "POST",
+        endpoint: "/training/enroll",
+        body: extractTrainingData(instruction, context),
+      });
+    }
   }
 
   return {
@@ -515,12 +1210,476 @@ function analyzeInstruction(instruction: string, context: IDataObject): any {
   };
 }
 
+// Build request functions for each resource
+async function buildPeopleRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/people";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "get":
+      endpoint = `/people/${resourceId}`;
+      break;
+    case "create":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "update":
+      method = "PUT";
+      endpoint = `/people/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "delete":
+      method = "DELETE";
+      endpoint = `/people/${resourceId}`;
+      body = { mode: "remove" };
+      break;
+    case "list":
+    case "search":
+      qs = { ...additionalFields };
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildRequestRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/request";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const requestId = context.getNodeParameter(
+    "requestId",
+    itemIndex,
+    ""
+  ) as string;
+  const dateRange = context.getNodeParameter(
+    "dateRange",
+    itemIndex,
+    {}
+  ) as IDataObject;
+
+  switch (operation) {
+    case "createLeave":
+      method = "POST";
+      endpoint = "/request/leave";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "createOvertime":
+      method = "POST";
+      endpoint = "/request/overtime";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "get":
+      endpoint = `/request/${requestId}`;
+      break;
+    case "list":
+      qs = { ...additionalFields, ...dateRange };
+      break;
+    case "approve":
+      method = "PUT";
+      endpoint = `/request/${requestId}/approve`;
+      break;
+    case "reject":
+      method = "PUT";
+      endpoint = `/request/${requestId}/reject`;
+      break;
+    case "importLeave":
+      method = "POST";
+      endpoint = "/request/import/leave";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "importOvertime":
+      method = "POST";
+      endpoint = "/request/import/overtime";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildDashboardRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  const endpoint = "/dashboard";
+  const method: IHttpRequestMethods = "GET";
+  const body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const dashboardMode = context.getNodeParameter(
+    "dashboardMode",
+    itemIndex,
+    "account_detail"
+  ) as string;
+  const dateRange = context.getNodeParameter(
+    "dateRange",
+    itemIndex,
+    {}
+  ) as IDataObject;
+
+  switch (operation) {
+    case "get":
+      qs = { mode: dashboardMode, ...additionalFields, ...dateRange };
+      break;
+    case "leaveSummary":
+      qs = { mode: "leave_summary", ...additionalFields, ...dateRange };
+      break;
+    case "absentData":
+      qs = { mode: "absent_data", ...additionalFields, ...dateRange };
+      break;
+    case "sickData":
+      qs = { mode: "sick_data", ...additionalFields, ...dateRange };
+      break;
+    case "accountDetail":
+      qs = { mode: "account_detail", ...additionalFields };
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildConfigurationRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/config";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+  const configGroup = context.getNodeParameter(
+    "configGroup",
+    itemIndex,
+    "COMPANY"
+  ) as string;
+
+  switch (operation) {
+    case "get":
+      qs = { group: configGroup, ...additionalFields };
+      break;
+    case "create":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "update":
+      method = "PUT";
+      endpoint = `/config/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "delete":
+      method = "DELETE";
+      endpoint = `/config/${resourceId}`;
+      break;
+    case "list":
+      qs = { group: configGroup, ...additionalFields };
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildUserRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/user";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "getProfile":
+      endpoint = "/user/profile";
+      break;
+    case "updateProfile":
+      method = "PUT";
+      endpoint = "/user/profile";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "changePassword":
+      method = "PUT";
+      endpoint = "/user/password";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "renewToken":
+      method = "POST";
+      endpoint = "/user/renew/token";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "getSettings":
+      endpoint = "/user/setting";
+      break;
+    case "updateSettings":
+      method = "PUT";
+      endpoint = "/user/setting";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildDepartmentRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/department";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "get":
+      endpoint = `/department/${resourceId}`;
+      break;
+    case "create":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "update":
+      method = "PUT";
+      endpoint = `/department/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "delete":
+      method = "DELETE";
+      endpoint = `/department/${resourceId}`;
+      break;
+    case "list":
+      qs = additionalFields;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildTrainingRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/training";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "getCourse":
+      endpoint = `/training/courses/${resourceId}`;
+      break;
+    case "listCourses":
+      endpoint = "/training/courses";
+      qs = additionalFields;
+      break;
+    case "createCourse":
+      method = "POST";
+      endpoint = "/training/courses";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "updateCourse":
+      method = "PUT";
+      endpoint = `/training/courses/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "deleteCourse":
+      method = "DELETE";
+      endpoint = `/training/courses/${resourceId}`;
+      break;
+    case "enroll":
+      method = "POST";
+      endpoint = "/training/enroll";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildLeaveTypeRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/leave/type";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "get":
+      endpoint = `/leave/type/${resourceId}`;
+      break;
+    case "create":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "update":
+      method = "PUT";
+      endpoint = `/leave/type/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "delete":
+      method = "DELETE";
+      endpoint = `/leave/type/${resourceId}`;
+      break;
+    case "list":
+      qs = additionalFields;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildAccountRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/account";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "switch":
+      method = "POST";
+      endpoint = "/account/switch";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "getInfo":
+      endpoint = "/account/info";
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildSitesRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/site";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "get":
+      endpoint = `/site/${resourceId}`;
+      break;
+    case "create":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "update":
+      method = "PUT";
+      endpoint = `/site/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "delete":
+      method = "DELETE";
+      endpoint = `/site/${resourceId}`;
+      break;
+    case "list":
+      qs = additionalFields;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+async function buildLicenseRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/people/license";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "addPeople":
+      method = "POST";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "getInfo":
+      endpoint = "/license/info";
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+// Enhanced helper functions
 async function checkPermissions(
   this: IExecuteFunctions,
   resource: string,
   operation: string
 ): Promise<boolean> {
-  // Check user permissions for the specific resource and operation
   try {
     const options: IHttpRequestOptions = {
       method: "GET",
@@ -535,108 +1694,8 @@ async function checkPermissions(
     );
     return response.hasPermission === true;
   } catch (error) {
-    // If permission check fails, assume no permission for security
     return false;
   }
-}
-
-function buildPeopleEndpoint(
-  context: IExecuteFunctions,
-  operation: string,
-  itemIndex: number
-): string {
-  switch (operation) {
-    case "get":
-    case "update":
-      const peopleId = context.getNodeParameter(
-        "peopleId",
-        itemIndex
-      ) as string;
-      return `/people/${peopleId}`;
-    case "create":
-    case "list":
-      return "/people";
-    default:
-      return "/people";
-  }
-}
-
-function buildPeopleRequest(
-  context: IExecuteFunctions,
-  operation: string,
-  itemIndex: number,
-  additionalFields: IDataObject
-) {
-  let method: IHttpRequestMethods = "GET";
-  let body: IDataObject = {};
-  const qs: IDataObject = additionalFields;
-
-  switch (operation) {
-    case "create":
-      method = "POST";
-      body = context.getNodeParameter(
-        "peopleData",
-        itemIndex,
-        {}
-      ) as IDataObject;
-      break;
-    case "update":
-      method = "PUT";
-      body = context.getNodeParameter(
-        "peopleData",
-        itemIndex,
-        {}
-      ) as IDataObject;
-      break;
-  }
-
-  return { method, body, qs };
-}
-
-function buildRequestEndpoint(
-  context: IExecuteFunctions,
-  operation: string,
-  itemIndex: number
-): string {
-  switch (operation) {
-    case "createLeave":
-      return "/request/leave";
-    case "createOvertime":
-      return "/request/overtime";
-    case "import":
-      return "/request/import/leave";
-    default:
-      return "/request";
-  }
-}
-
-function buildRequestRequest(
-  context: IExecuteFunctions,
-  operation: string,
-  itemIndex: number,
-  additionalFields: IDataObject
-) {
-  let method: IHttpRequestMethods = "GET";
-  let body: IDataObject = {};
-  const qs: IDataObject = additionalFields;
-
-  switch (operation) {
-    case "createLeave":
-    case "createOvertime":
-      method = "POST";
-      body = context.getNodeParameter(
-        "requestData",
-        itemIndex,
-        {}
-      ) as IDataObject;
-      break;
-    case "import":
-      method = "POST";
-      // Handle file upload for import operations
-      break;
-  }
-
-  return { method, body, qs };
 }
 
 function extractFilters(instruction: string): IDataObject {
@@ -647,15 +1706,63 @@ function extractFilters(instruction: string): IDataObject {
     /(?:in|from)\s+(?:the\s+)?(\w+)\s+department/i
   );
   if (deptMatch) {
-    filters.department = deptMatch[1];
+    filters.departmentId = deptMatch[1];
   }
 
   // Extract status filters
-  if (instruction.includes("active")) {
-    filters.status = "active";
-  }
+  if (instruction.includes("active")) filters.status = "active";
+  if (instruction.includes("pending")) filters.status = "pending";
+  if (instruction.includes("approved")) filters.status = "approved";
+  if (instruction.includes("rejected")) filters.status = "rejected";
+
+  // Extract date ranges
+  const dateRange = extractDateRange(instruction);
+  Object.assign(filters, dateRange);
 
   return filters;
+}
+
+function extractDateRange(instruction: string): IDataObject {
+  const dateRange: IDataObject = {};
+
+  // Extract common date patterns
+  if (instruction.includes("this month")) {
+    const now = new Date();
+    dateRange.start = new Date(now.getFullYear(), now.getMonth(), 1)
+      .toISOString()
+      .split("T")[0];
+    dateRange.end = new Date(now.getFullYear(), now.getMonth() + 1, 0)
+      .toISOString()
+      .split("T")[0];
+  }
+
+  if (instruction.includes("this year")) {
+    const now = new Date();
+    dateRange.start = `${now.getFullYear()}-01-01`;
+    dateRange.end = `${now.getFullYear()}-12-31`;
+  }
+
+  return dateRange;
+}
+
+function extractPersonData(
+  instruction: string,
+  context: IDataObject
+): IDataObject {
+  const personData: IDataObject = {};
+
+  // Extract name
+  const nameMatch = instruction.match(
+    /(?:employee|person|staff)\s+(?:named\s+)?([A-Za-z\s]+)/i
+  );
+  if (nameMatch) {
+    personData.name = nameMatch[1].trim();
+  }
+
+  // Merge with context data
+  Object.assign(personData, context);
+
+  return personData;
 }
 
 function extractLeaveData(
@@ -664,17 +1771,28 @@ function extractLeaveData(
 ): IDataObject {
   const leaveData: IDataObject = {};
 
-  // Extract employee name or ID from instruction
+  // Extract employee name or ID
   const nameMatch = instruction.match(/for\s+([A-Za-z\s]+)/i);
   if (nameMatch) {
     leaveData.employeeName = nameMatch[1].trim();
   }
 
-  // Use context data if available
-  if (context.employeeId) {
-    leaveData.employeeId = context.employeeId;
+  // Extract dates
+  const dateMatch = instruction.match(
+    /from\s+(\d{4}-\d{2}-\d{2})\s+to\s+(\d{4}-\d{2}-\d{2})/i
+  );
+  if (dateMatch) {
+    leaveData.startDate = dateMatch[1];
+    leaveData.endDate = dateMatch[2];
   }
 
+  // Extract days
+  const daysMatch = instruction.match(/(\d+)\s+days?/i);
+  if (daysMatch) {
+    leaveData.days = Number.parseInt(daysMatch[1]);
+  }
+
+  Object.assign(leaveData, context);
   return leaveData;
 }
 
@@ -684,40 +1802,92 @@ function extractOvertimeData(
 ): IDataObject {
   const overtimeData: IDataObject = {};
 
-  // Extract hours from instruction
+  // Extract hours
   const hoursMatch = instruction.match(/(\d+)\s+hours?/i);
   if (hoursMatch) {
     overtimeData.hours = Number.parseInt(hoursMatch[1]);
   }
 
-  // Merge with context data
-  Object.assign(overtimeData, context);
+  // Extract employee info
+  const nameMatch = instruction.match(/for\s+([A-Za-z\s]+)/i);
+  if (nameMatch) {
+    overtimeData.employeeName = nameMatch[1].trim();
+  }
 
+  Object.assign(overtimeData, context);
   return overtimeData;
+}
+
+function extractTrainingData(
+  instruction: string,
+  context: IDataObject
+): IDataObject {
+  const trainingData: IDataObject = {};
+
+  // Extract course info
+  const courseMatch = instruction.match(/(?:course|training)\s+([A-Za-z\s]+)/i);
+  if (courseMatch) {
+    trainingData.courseName = courseMatch[1].trim();
+  }
+
+  Object.assign(trainingData, context);
+  return trainingData;
+}
+
+function extractRequestId(instruction: string, context: IDataObject): string {
+  // Extract request ID from instruction or context
+  const idMatch = instruction.match(/request\s+(?:id\s+)?(\d+)/i);
+  if (idMatch) {
+    return idMatch[1];
+  }
+
+  return (context.requestId as string) || "";
 }
 
 function calculateConfidence(actions: any[], instruction: string): number {
   if (actions.length === 0) return 0;
 
-  // Calculate confidence based on keyword matches
   const keywords = instruction.toLowerCase().split(" ");
   const relevantKeywords = [
     "get",
     "create",
     "update",
     "delete",
+    "list",
+    "search",
     "employee",
+    "staff",
+    "people",
+    "person",
     "leave",
     "overtime",
+    "request",
+    "approve",
+    "reject",
+    "dashboard",
+    "report",
+    "summary",
+    "department",
+    "training",
+    "course",
+    "enroll",
   ];
   const matches = keywords.filter((word) => relevantKeywords.includes(word));
 
-  return Math.min(matches.length / relevantKeywords.length, 1);
+  return Math.min(matches.length / 3, 1); // Normalize to max 1.0
 }
 
 function generateSummary(results: any[]): string {
   const successful = results.filter((r) => r.success).length;
   const failed = results.filter((r) => r.error).length;
+  const permissionDenied = results.filter(
+    (r) => r.error === "Insufficient permissions"
+  ).length;
 
-  return `Executed ${results.length} actions: ${successful} successful, ${failed} failed`;
+  let summary = `Executed ${results.length} actions: ${successful} successful, ${failed} failed`;
+  if (permissionDenied > 0) {
+    summary += `, ${permissionDenied} permission denied`;
+  }
+
+  return summary;
 }
