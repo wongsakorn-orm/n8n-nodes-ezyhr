@@ -65,8 +65,16 @@ class EzyHR {
                             value: "account",
                         },
                         {
+                            name: "Attendance",
+                            value: "attendance",
+                        },
+                        {
                             name: "Configuration",
                             value: "configuration",
+                        },
+                        {
+                            name: "Curriculum",
+                            value: "curriculum",
                         },
                         {
                             name: "Dashboard",
@@ -77,12 +85,24 @@ class EzyHR {
                             value: "department",
                         },
                         {
+                            name: "Email",
+                            value: "email",
+                        },
+                        {
+                            name: "File",
+                            value: "file",
+                        },
+                        {
                             name: "Leave Type",
                             value: "leaveType",
                         },
                         {
                             name: "License",
                             value: "license",
+                        },
+                        {
+                            name: "PaySlip",
+                            value: "payslip",
                         },
                         {
                             name: "Person",
@@ -95,6 +115,10 @@ class EzyHR {
                         {
                             name: "Site",
                             value: "sites",
+                        },
+                        {
+                            name: "Support Tool",
+                            value: "supportTool",
                         },
                         {
                             name: "Training",
@@ -149,6 +173,11 @@ class EzyHR {
                             value: "update",
                             action: "Update person information",
                         },
+                        {
+                            name: "Update Password",
+                            value: "updatePassword",
+                            action: "Update person password",
+                        },
                     ],
                     default: "get",
                 },
@@ -178,6 +207,16 @@ class EzyHR {
                             name: "Create Overtime Request",
                             value: "createOvertime",
                             action: "Create an overtime request",
+                        },
+                        {
+                            name: "Get Checkin Request",
+                            value: "getCheckin",
+                            action: "Get checkin request details",
+                        },
+                        {
+                            name: "Get Count Waiting",
+                            value: "getCountWaiting",
+                            action: "Get count of waiting requests",
                         },
                         {
                             name: "Get Request",
@@ -300,9 +339,19 @@ class EzyHR {
                     },
                     options: [
                         {
+                            name: "Change Language",
+                            value: "changeLanguage",
+                            action: "Change user language",
+                        },
+                        {
                             name: "Change Password",
                             value: "changePassword",
                             action: "Change user password",
+                        },
+                        {
+                            name: "Check Reset Token",
+                            value: "checkResetToken",
+                            action: "Check password reset token",
                         },
                         {
                             name: "Get Profile",
@@ -318,6 +367,21 @@ class EzyHR {
                             name: "Renew Token",
                             value: "renewToken",
                             action: "Renew authentication token",
+                        },
+                        {
+                            name: "Reset Password",
+                            value: "resetPassword",
+                            action: "Reset user password",
+                        },
+                        {
+                            name: "Send Reset OTP",
+                            value: "sendResetOtp",
+                            action: "Send password reset OTP",
+                        },
+                        {
+                            name: "Signup",
+                            value: "signup",
+                            action: "Create new user account",
                         },
                         {
                             name: "Update Profile",
@@ -405,6 +469,11 @@ class EzyHR {
                             action: "Get training course",
                         },
                         {
+                            name: "Get People in Course",
+                            value: "getPeopleInCourse",
+                            action: "Get people enrolled in course",
+                        },
+                        {
                             name: "List Courses",
                             value: "listCourses",
                             action: "List training courses",
@@ -470,14 +539,14 @@ class EzyHR {
                     },
                     options: [
                         {
-                            name: "Switch Account",
-                            value: "switch",
-                            action: "Switch to different account",
-                        },
-                        {
                             name: "Get Account Info",
                             value: "getInfo",
                             action: "Get account information",
+                        },
+                        {
+                            name: "Switch Account",
+                            value: "switch",
+                            action: "Switch to different account",
                         },
                     ],
                     default: "getInfo",
@@ -548,6 +617,166 @@ class EzyHR {
                     default: "getInfo",
                 },
                 {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["attendance"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Get Abnormal Attendance",
+                            value: "getAbnormal",
+                            action: "Get abnormal attendance data",
+                        },
+                    ],
+                    default: "getAbnormal",
+                },
+                {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["email"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Send Request Email",
+                            value: "sendRequest",
+                            action: "Send request notification email",
+                        },
+                    ],
+                    default: "sendRequest",
+                },
+                {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["curriculum"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Get Categories",
+                            value: "getCategories",
+                            action: "Get curriculum categories",
+                        },
+                        {
+                            name: "Get Category Detail",
+                            value: "getCategoryDetail",
+                            action: "Get curriculum category detail",
+                        },
+                        {
+                            name: "Get Curriculum",
+                            value: "get",
+                            action: "Get curriculum detail",
+                        },
+                        {
+                            name: "List Curriculum",
+                            value: "list",
+                            action: "List all curriculum",
+                        },
+                    ],
+                    default: "getCategories",
+                },
+                {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["file"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Sign File",
+                            value: "sign",
+                            action: "Sign uploaded file",
+                        },
+                        {
+                            name: "Upload File",
+                            value: "upload",
+                            action: "Upload file to system",
+                        },
+                    ],
+                    default: "upload",
+                },
+                {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["payslip"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Confirm PaySlip",
+                            value: "confirm",
+                            action: "Confirm payslip",
+                        },
+                        {
+                            name: "Get PaySlip",
+                            value: "get",
+                            action: "Get payslip information",
+                        },
+                        {
+                            name: "List PaySlips",
+                            value: "list",
+                            action: "List all payslips",
+                        },
+                        {
+                            name: "Update Period",
+                            value: "updatePeriod",
+                            action: "Update payslip period",
+                        },
+                    ],
+                    default: "get",
+                },
+                {
+                    displayName: "Operation",
+                    name: "operation",
+                    type: "options",
+                    noDataExpression: true,
+                    displayOptions: {
+                        show: {
+                            mode: ["predefined"],
+                            resource: ["supportTool"],
+                        },
+                    },
+                    options: [
+                        {
+                            name: "Change Full Staff ID",
+                            value: "changeFullStaff",
+                            action: "Change full staff ID",
+                        },
+                        {
+                            name: "Test Recalculate OT",
+                            value: "testRecalOt",
+                            action: "Test recalculate overtime",
+                        },
+                    ],
+                    default: "changeFullStaff",
+                },
+                {
                     displayName: "AI Instruction",
                     name: "aiInstruction",
                     type: "string",
@@ -585,8 +814,9 @@ class EzyHR {
                                 "sites",
                                 "leaveType",
                                 "configuration",
+                                "curriculum",
                             ],
-                            operation: ["get", "update", "delete"],
+                            operation: ["get", "update", "delete", "getCategoryDetail"],
                         },
                     },
                     default: "",
@@ -600,7 +830,7 @@ class EzyHR {
                         show: {
                             mode: ["predefined"],
                             resource: ["request"],
-                            operation: ["get", "approve", "reject"],
+                            operation: ["get", "approve", "reject", "getCheckin"],
                         },
                     },
                     default: "",
@@ -619,16 +849,16 @@ class EzyHR {
                     },
                     options: [
                         {
+                            name: "Absent Data",
+                            value: "absent_data",
+                        },
+                        {
                             name: "Account Detail",
                             value: "account_detail",
                         },
                         {
                             name: "Leave Summary",
                             value: "leave_summary",
-                        },
-                        {
-                            name: "Absent Data",
-                            value: "absent_data",
                         },
                         {
                             name: "Sick Data",
@@ -676,6 +906,7 @@ class EzyHR {
                                 "createLeave",
                                 "createOvertime",
                                 "enroll",
+                                "sendRequest",
                             ],
                         },
                     },
@@ -690,24 +921,24 @@ class EzyHR {
                     displayOptions: {
                         show: {
                             mode: ["predefined"],
-                            resource: ["dashboard", "request"],
+                            resource: ["dashboard", "request", "attendance"],
                         },
                     },
                     default: {},
                     options: [
-                        {
-                            displayName: "Start Date",
-                            name: "start",
-                            type: "dateTime",
-                            default: "",
-                            description: "Start date for the query",
-                        },
                         {
                             displayName: "End Date",
                             name: "end",
                             type: "dateTime",
                             default: "",
                             description: "End date for the query",
+                        },
+                        {
+                            displayName: "Start Date",
+                            name: "start",
+                            type: "dateTime",
+                            default: "",
+                            description: "Start date for the query",
                         },
                     ],
                 },
@@ -831,37 +1062,55 @@ async function executePredefinedAction(itemIndex) {
     let qs = {};
     switch (resource) {
         case "people":
-            ({ endpoint, method, body, qs } = await buildPeopleRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildPeopleRequest(this, operation, itemIndex, additionalFields));
             break;
         case "request":
-            ({ endpoint, method, body, qs } = await buildRequestRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildRequestRequest(this, operation, itemIndex, additionalFields));
             break;
         case "dashboard":
-            ({ endpoint, method, body, qs } = await buildDashboardRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildDashboardRequest(this, operation, itemIndex, additionalFields));
             break;
         case "configuration":
-            ({ endpoint, method, body, qs } = await buildConfigurationRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildConfigurationRequest(this, operation, itemIndex, additionalFields));
             break;
         case "user":
-            ({ endpoint, method, body, qs } = await buildUserRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildUserRequest(this, operation, itemIndex, additionalFields));
             break;
         case "department":
-            ({ endpoint, method, body, qs } = await buildDepartmentRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildDepartmentRequest(this, operation, itemIndex, additionalFields));
             break;
         case "training":
-            ({ endpoint, method, body, qs } = await buildTrainingRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildTrainingRequest(this, operation, itemIndex, additionalFields));
             break;
         case "leaveType":
-            ({ endpoint, method, body, qs } = await buildLeaveTypeRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildLeaveTypeRequest(this, operation, itemIndex, additionalFields));
             break;
         case "account":
-            ({ endpoint, method, body, qs } = await buildAccountRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildAccountRequest(this, operation, itemIndex, additionalFields));
             break;
         case "sites":
-            ({ endpoint, method, body, qs } = await buildSitesRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildSitesRequest(this, operation, itemIndex, additionalFields));
             break;
         case "license":
-            ({ endpoint, method, body, qs } = await buildLicenseRequest(this, operation, itemIndex, additionalFields));
+            ({ endpoint, method, body, qs } = buildLicenseRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "attendance":
+            ({ endpoint, method, body, qs } = buildAttendanceRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "email":
+            ({ endpoint, method, body, qs } = buildEmailRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "curriculum":
+            ({ endpoint, method, body, qs } = buildCurriculumRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "file":
+            ({ endpoint, method, body, qs } = buildFileRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "payslip":
+            ({ endpoint, method, body, qs } = buildPaySlipRequest(this, operation, itemIndex, additionalFields));
+            break;
+        case "supportTool":
+            ({ endpoint, method, body, qs } = buildSupportToolRequest(this, operation, itemIndex, additionalFields));
             break;
     }
     const hasPermission = await checkPermissions.call(this, resource, operation);
@@ -1055,7 +1304,7 @@ function analyzeInstruction(instruction, context) {
         confidence: calculateConfidence(actions, instruction),
     };
 }
-async function buildPeopleRequest(context, operation, itemIndex, additionalFields) {
+function buildPeopleRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/people";
     let method = "GET";
     let body = {};
@@ -1083,10 +1332,15 @@ async function buildPeopleRequest(context, operation, itemIndex, additionalField
         case "search":
             qs = { ...additionalFields };
             break;
+        case "updatePassword":
+            method = "POST";
+            endpoint = `/people/password/${resourceId}`;
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
     }
     return { endpoint, method, body, qs };
 }
-async function buildRequestRequest(context, operation, itemIndex, additionalFields) {
+function buildRequestRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/request";
     let method = "GET";
     let body = {};
@@ -1128,10 +1382,16 @@ async function buildRequestRequest(context, operation, itemIndex, additionalFiel
             endpoint = "/request/import/overtime";
             body = context.getNodeParameter("data", itemIndex, {});
             break;
+        case "getCountWaiting":
+            qs = { get_mode: "count_total_waiting", ...additionalFields };
+            break;
+        case "getCheckin":
+            endpoint = `/request/checkin/${requestId}`;
+            break;
     }
     return { endpoint, method, body, qs };
 }
-async function buildDashboardRequest(context, operation, itemIndex, additionalFields) {
+function buildDashboardRequest(context, operation, itemIndex, additionalFields) {
     const endpoint = "/dashboard";
     const method = "GET";
     const body = {};
@@ -1157,7 +1417,7 @@ async function buildDashboardRequest(context, operation, itemIndex, additionalFi
     }
     return { endpoint, method, body, qs };
 }
-async function buildConfigurationRequest(context, operation, itemIndex, additionalFields) {
+function buildConfigurationRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/config";
     let method = "GET";
     let body = {};
@@ -1187,7 +1447,7 @@ async function buildConfigurationRequest(context, operation, itemIndex, addition
     }
     return { endpoint, method, body, qs };
 }
-async function buildUserRequest(context, operation, itemIndex, additionalFields) {
+function buildUserRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/user";
     let method = "GET";
     let body = {};
@@ -1219,10 +1479,39 @@ async function buildUserRequest(context, operation, itemIndex, additionalFields)
             endpoint = "/user/setting";
             body = context.getNodeParameter("data", itemIndex, {});
             break;
+        case "changeLanguage":
+            method = "POST";
+            endpoint = "/user/language";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+        case "checkResetToken":
+            method = "GET";
+            endpoint = "/user/check/reset-password";
+            const tokenData = context.getNodeParameter("data", itemIndex, {});
+            endpoint = `/user/check/reset-password/${tokenData.token}/otp`;
+            if (tokenData.otp_code) {
+                qs.otp_code = tokenData.otp_code;
+            }
+            break;
+        case "resetPassword":
+            method = "POST";
+            endpoint = "/user/reset-password";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+        case "sendResetOtp":
+            method = "POST";
+            endpoint = "/user/send-reset-otp";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+        case "signup":
+            method = "POST";
+            endpoint = "/user/signup";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
     }
     return { endpoint, method, body, qs };
 }
-async function buildDepartmentRequest(context, operation, itemIndex, additionalFields) {
+function buildDepartmentRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/department";
     let method = "GET";
     let body = {};
@@ -1251,7 +1540,7 @@ async function buildDepartmentRequest(context, operation, itemIndex, additionalF
     }
     return { endpoint, method, body, qs };
 }
-async function buildTrainingRequest(context, operation, itemIndex, additionalFields) {
+function buildTrainingRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/training";
     let method = "GET";
     let body = {};
@@ -1284,10 +1573,14 @@ async function buildTrainingRequest(context, operation, itemIndex, additionalFie
             endpoint = "/training/enroll";
             body = context.getNodeParameter("data", itemIndex, {});
             break;
+        case "getPeopleInCourse":
+            endpoint = `/training/course/${resourceId}/people`;
+            qs = additionalFields;
+            break;
     }
     return { endpoint, method, body, qs };
 }
-async function buildLeaveTypeRequest(context, operation, itemIndex, additionalFields) {
+function buildLeaveTypeRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/leave/type";
     let method = "GET";
     let body = {};
@@ -1316,7 +1609,7 @@ async function buildLeaveTypeRequest(context, operation, itemIndex, additionalFi
     }
     return { endpoint, method, body, qs };
 }
-async function buildAccountRequest(context, operation, itemIndex, additionalFields) {
+function buildAccountRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/account";
     let method = "GET";
     let body = {};
@@ -1333,7 +1626,7 @@ async function buildAccountRequest(context, operation, itemIndex, additionalFiel
     }
     return { endpoint, method, body, qs };
 }
-async function buildSitesRequest(context, operation, itemIndex, additionalFields) {
+function buildSitesRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/site";
     let method = "GET";
     let body = {};
@@ -1362,7 +1655,7 @@ async function buildSitesRequest(context, operation, itemIndex, additionalFields
     }
     return { endpoint, method, body, qs };
 }
-async function buildLicenseRequest(context, operation, itemIndex, additionalFields) {
+function buildLicenseRequest(context, operation, itemIndex, additionalFields) {
     let endpoint = "/people/license";
     let method = "GET";
     let body = {};
@@ -1374,6 +1667,122 @@ async function buildLicenseRequest(context, operation, itemIndex, additionalFiel
             break;
         case "getInfo":
             endpoint = "/license/info";
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildAttendanceRequest(context, operation, itemIndex, additionalFields) {
+    const endpoint = "/dashboard/get-abnormal-attendance";
+    const method = "GET";
+    const body = {};
+    let qs = additionalFields;
+    const dateRange = context.getNodeParameter("dateRange", itemIndex, {});
+    switch (operation) {
+        case "getAbnormal":
+            qs = {
+                attendance_mode: "attendance_detail",
+                ...dateRange,
+                ...additionalFields,
+            };
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildEmailRequest(context, operation, itemIndex, additionalFields) {
+    const endpoint = "/request/sendmail-request";
+    const method = "POST";
+    let body = {};
+    const qs = additionalFields;
+    switch (operation) {
+        case "sendRequest":
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildCurriculumRequest(context, operation, itemIndex, additionalFields) {
+    let endpoint = "/training/curriculum";
+    const method = "GET";
+    const body = {};
+    let qs = additionalFields;
+    const resourceId = context.getNodeParameter("resourceId", itemIndex, "");
+    switch (operation) {
+        case "getCategories":
+            endpoint = "/training/curriculum/categories";
+            break;
+        case "getCategoryDetail":
+            endpoint = `/training/curriculum/category/${resourceId}`;
+            break;
+        case "get":
+            endpoint = `/training/curriculum/${resourceId}`;
+            break;
+        case "list":
+            endpoint = "/training/curriculum";
+            qs = additionalFields;
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildFileRequest(context, operation, itemIndex, additionalFields) {
+    let endpoint = "/file";
+    const method = "POST";
+    let body = {};
+    const qs = additionalFields;
+    switch (operation) {
+        case "upload":
+            endpoint = "/file/upload";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+        case "sign":
+            endpoint = "/file/sign";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildPaySlipRequest(context, operation, itemIndex, additionalFields) {
+    let endpoint = "/payslip";
+    let method = "GET";
+    let body = {};
+    let qs = additionalFields;
+    const resourceId = context.getNodeParameter("resourceId", itemIndex, "");
+    switch (operation) {
+        case "confirm":
+            method = "POST";
+            endpoint = "/payslip/confirm";
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+        case "get":
+            endpoint = `/payslip/${resourceId}`;
+            break;
+        case "list":
+            qs = additionalFields;
+            break;
+        case "updatePeriod":
+            method = "PUT";
+            endpoint = `/pay-slip/period/${resourceId}`;
+            body = context.getNodeParameter("data", itemIndex, {});
+            break;
+    }
+    return { endpoint, method, body, qs };
+}
+function buildSupportToolRequest(context, operation, itemIndex, additionalFields) {
+    let endpoint = "/support_tool";
+    let method = "PUT";
+    let body = {};
+    const qs = additionalFields;
+    switch (operation) {
+        case "changeFullStaff":
+            endpoint = "/support_tool/change-fullstaffs";
+            const requestData = context.getNodeParameter("data", itemIndex, {});
+            body = {
+                mode: "change_fullstaff_id",
+                ...requestData,
+            };
+            break;
+        case "testRecalOt":
+            method = "GET";
+            endpoint = "/request/testrecalot";
             break;
     }
     return { endpoint, method, body, qs };

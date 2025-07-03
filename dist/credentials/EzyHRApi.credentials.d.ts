@@ -1,4 +1,4 @@
-import type { IAuthenticateGeneric, ICredentialType, INodeProperties, Icon, ICredentialTestRequest } from "n8n-workflow";
+import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties, Icon } from "n8n-workflow";
 export declare class EzyHRApi implements ICredentialType {
     name: string;
     displayName: string;

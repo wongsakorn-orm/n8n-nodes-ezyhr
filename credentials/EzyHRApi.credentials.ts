@@ -1,43 +1,46 @@
 import type {
   IAuthenticateGeneric,
+  ICredentialTestRequest,
   ICredentialType,
   INodeProperties,
   Icon,
-  ICredentialTestRequest,
 } from "n8n-workflow";
 
 export class EzyHRApi implements ICredentialType {
   name = "ezyHRApi";
   displayName = "EzyHR API";
-  documentationUrl = "https://ezyhr.com/docs";
+  documentationUrl = "https://api.ezyhr.com/docs";
   icon: Icon = "file:ezyhr.svg";
   properties: INodeProperties[] = [
     {
-      displayName: "API Base URL",
+      displayName: "Base URL",
       name: "baseUrl",
       type: "string",
       default: "https://api.ezyhr.com/v1",
       required: true,
-      description: "The base URL for your EzyHR API instance",
+      description: "The base URL of your EzyHR API instance",
     },
     {
-      displayName: "Session Token",
-      name: "sessionToken",
+      displayName: "API Key",
+      name: "apiKey",
       type: "string",
       typeOptions: {
         password: true,
       },
       default: "",
       required: true,
-      description: "Your EzyHR session token (JWT) from authentication",
+      description: "Your EzyHR API Key from the Integration section",
     },
     {
-      displayName: "Company Path",
-      name: "companyPath",
+      displayName: "Secret Key",
+      name: "secretKey",
       type: "string",
+      typeOptions: {
+        password: true,
+      },
       default: "",
-      required: false,
-      description: "Company path identifier for multi-tenant setups",
+      required: true,
+      description: "Your EzyHR Secret Key from the Integration section",
     },
   ];
 
@@ -45,9 +48,8 @@ export class EzyHRApi implements ICredentialType {
     type: "generic",
     properties: {
       headers: {
-        Authorization: "=Bearer {{$credentials.sessionToken}}",
-        "App-Source": "EzyHR3",
-        "App-Version": "1.0.51",
+        "X-API-Key": "={{$credentials.apiKey}}",
+        "X-Secret-Key": "={{$credentials.secretKey}}",
       },
     },
   };
@@ -55,7 +57,7 @@ export class EzyHRApi implements ICredentialType {
   test: ICredentialTestRequest = {
     request: {
       baseURL: "={{$credentials.baseUrl}}",
-      url: "/config?group=COMPANY",
+      url: "/user/profile",
       method: "GET",
     },
   };

@@ -73,8 +73,16 @@ export class EzyHR implements INodeType {
             value: "account",
           },
           {
+            name: "Attendance",
+            value: "attendance",
+          },
+          {
             name: "Configuration",
             value: "configuration",
+          },
+          {
+            name: "Curriculum",
+            value: "curriculum",
           },
           {
             name: "Dashboard",
@@ -85,12 +93,24 @@ export class EzyHR implements INodeType {
             value: "department",
           },
           {
+            name: "Email",
+            value: "email",
+          },
+          {
+            name: "File",
+            value: "file",
+          },
+          {
             name: "Leave Type",
             value: "leaveType",
           },
           {
             name: "License",
             value: "license",
+          },
+          {
+            name: "PaySlip",
+            value: "payslip",
           },
           {
             name: "Person",
@@ -103,6 +123,10 @@ export class EzyHR implements INodeType {
           {
             name: "Site",
             value: "sites",
+          },
+          {
+            name: "Support Tool",
+            value: "supportTool",
           },
           {
             name: "Training",
@@ -158,6 +182,11 @@ export class EzyHR implements INodeType {
             value: "update",
             action: "Update person information",
           },
+          {
+            name: "Update Password",
+            value: "updatePassword",
+            action: "Update person password",
+          },
         ],
         default: "get",
       },
@@ -188,6 +217,16 @@ export class EzyHR implements INodeType {
             name: "Create Overtime Request",
             value: "createOvertime",
             action: "Create an overtime request",
+          },
+          {
+            name: "Get Checkin Request",
+            value: "getCheckin",
+            action: "Get checkin request details",
+          },
+          {
+            name: "Get Count Waiting",
+            value: "getCountWaiting",
+            action: "Get count of waiting requests",
           },
           {
             name: "Get Request",
@@ -313,9 +352,19 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
+            name: "Change Language",
+            value: "changeLanguage",
+            action: "Change user language",
+          },
+          {
             name: "Change Password",
             value: "changePassword",
             action: "Change user password",
+          },
+          {
+            name: "Check Reset Token",
+            value: "checkResetToken",
+            action: "Check password reset token",
           },
           {
             name: "Get Profile",
@@ -331,6 +380,21 @@ export class EzyHR implements INodeType {
             name: "Renew Token",
             value: "renewToken",
             action: "Renew authentication token",
+          },
+          {
+            name: "Reset Password",
+            value: "resetPassword",
+            action: "Reset user password",
+          },
+          {
+            name: "Send Reset OTP",
+            value: "sendResetOtp",
+            action: "Send password reset OTP",
+          },
+          {
+            name: "Signup",
+            value: "signup",
+            action: "Create new user account",
           },
           {
             name: "Update Profile",
@@ -420,6 +484,11 @@ export class EzyHR implements INodeType {
             action: "Get training course",
           },
           {
+            name: "Get People in Course",
+            value: "getPeopleInCourse",
+            action: "Get people enrolled in course",
+          },
+          {
             name: "List Courses",
             value: "listCourses",
             action: "List training courses",
@@ -487,14 +556,14 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
-            name: "Switch Account",
-            value: "switch",
-            action: "Switch to different account",
-          },
-          {
             name: "Get Account Info",
             value: "getInfo",
             action: "Get account information",
+          },
+          {
+            name: "Switch Account",
+            value: "switch",
+            action: "Switch to different account",
           },
         ],
         default: "getInfo",
@@ -566,6 +635,172 @@ export class EzyHR implements INodeType {
         ],
         default: "getInfo",
       },
+      // Attendance Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["attendance"],
+          },
+        },
+        options: [
+          {
+            name: "Get Abnormal Attendance",
+            value: "getAbnormal",
+            action: "Get abnormal attendance data",
+          },
+        ],
+        default: "getAbnormal",
+      },
+      // Email Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["email"],
+          },
+        },
+        options: [
+          {
+            name: "Send Request Email",
+            value: "sendRequest",
+            action: "Send request notification email",
+          },
+        ],
+        default: "sendRequest",
+      },
+      // Curriculum Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["curriculum"],
+          },
+        },
+        options: [
+          {
+            name: "Get Categories",
+            value: "getCategories",
+            action: "Get curriculum categories",
+          },
+          {
+            name: "Get Category Detail",
+            value: "getCategoryDetail",
+            action: "Get curriculum category detail",
+          },
+          {
+            name: "Get Curriculum",
+            value: "get",
+            action: "Get curriculum detail",
+          },
+          {
+            name: "List Curriculum",
+            value: "list",
+            action: "List all curriculum",
+          },
+        ],
+        default: "getCategories",
+      },
+      // File Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["file"],
+          },
+        },
+        options: [
+          {
+            name: "Sign File",
+            value: "sign",
+            action: "Sign uploaded file",
+          },
+          {
+            name: "Upload File",
+            value: "upload",
+            action: "Upload file to system",
+          },
+        ],
+        default: "upload",
+      },
+      // PaySlip Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["payslip"],
+          },
+        },
+        options: [
+          {
+            name: "Confirm PaySlip",
+            value: "confirm",
+            action: "Confirm payslip",
+          },
+          {
+            name: "Get PaySlip",
+            value: "get",
+            action: "Get payslip information",
+          },
+          {
+            name: "List PaySlips",
+            value: "list",
+            action: "List all payslips",
+          },
+          {
+            name: "Update Period",
+            value: "updatePeriod",
+            action: "Update payslip period",
+          },
+        ],
+        default: "get",
+      },
+      // Support Tool Operations
+      {
+        displayName: "Operation",
+        name: "operation",
+        type: "options",
+        noDataExpression: true,
+        displayOptions: {
+          show: {
+            mode: ["predefined"],
+            resource: ["supportTool"],
+          },
+        },
+        options: [
+          {
+            name: "Change Full Staff ID",
+            value: "changeFullStaff",
+            action: "Change full staff ID",
+          },
+          {
+            name: "Test Recalculate OT",
+            value: "testRecalOt",
+            action: "Test recalculate overtime",
+          },
+        ],
+        default: "changeFullStaff",
+      },
       // AI Instruction
       {
         displayName: "AI Instruction",
@@ -607,8 +842,9 @@ export class EzyHR implements INodeType {
               "sites",
               "leaveType",
               "configuration",
+              "curriculum",
             ],
-            operation: ["get", "update", "delete"],
+            operation: ["get", "update", "delete", "getCategoryDetail"],
           },
         },
         default: "",
@@ -622,7 +858,7 @@ export class EzyHR implements INodeType {
           show: {
             mode: ["predefined"],
             resource: ["request"],
-            operation: ["get", "approve", "reject"],
+            operation: ["get", "approve", "reject", "getCheckin"],
           },
         },
         default: "",
@@ -641,16 +877,16 @@ export class EzyHR implements INodeType {
         },
         options: [
           {
+            name: "Absent Data",
+            value: "absent_data",
+          },
+          {
             name: "Account Detail",
             value: "account_detail",
           },
           {
             name: "Leave Summary",
             value: "leave_summary",
-          },
-          {
-            name: "Absent Data",
-            value: "absent_data",
           },
           {
             name: "Sick Data",
@@ -698,6 +934,7 @@ export class EzyHR implements INodeType {
               "createLeave",
               "createOvertime",
               "enroll",
+              "sendRequest",
             ],
           },
         },
@@ -712,24 +949,24 @@ export class EzyHR implements INodeType {
         displayOptions: {
           show: {
             mode: ["predefined"],
-            resource: ["dashboard", "request"],
+            resource: ["dashboard", "request", "attendance"],
           },
         },
         default: {},
         options: [
-          {
-            displayName: "Start Date",
-            name: "start",
-            type: "dateTime",
-            default: "",
-            description: "Start date for the query",
-          },
           {
             displayName: "End Date",
             name: "end",
             type: "dateTime",
             default: "",
             description: "End date for the query",
+          },
+          {
+            displayName: "Start Date",
+            name: "start",
+            type: "dateTime",
+            default: "",
+            description: "Start date for the query",
           },
         ],
       },
@@ -863,7 +1100,7 @@ async function executePredefinedAction(
   // Build request based on resource and operation
   switch (resource) {
     case "people":
-      ({ endpoint, method, body, qs } = await buildPeopleRequest(
+      ({ endpoint, method, body, qs } = buildPeopleRequest(
         this,
         operation,
         itemIndex,
@@ -871,7 +1108,7 @@ async function executePredefinedAction(
       ));
       break;
     case "request":
-      ({ endpoint, method, body, qs } = await buildRequestRequest(
+      ({ endpoint, method, body, qs } = buildRequestRequest(
         this,
         operation,
         itemIndex,
@@ -879,7 +1116,7 @@ async function executePredefinedAction(
       ));
       break;
     case "dashboard":
-      ({ endpoint, method, body, qs } = await buildDashboardRequest(
+      ({ endpoint, method, body, qs } = buildDashboardRequest(
         this,
         operation,
         itemIndex,
@@ -887,7 +1124,7 @@ async function executePredefinedAction(
       ));
       break;
     case "configuration":
-      ({ endpoint, method, body, qs } = await buildConfigurationRequest(
+      ({ endpoint, method, body, qs } = buildConfigurationRequest(
         this,
         operation,
         itemIndex,
@@ -895,7 +1132,7 @@ async function executePredefinedAction(
       ));
       break;
     case "user":
-      ({ endpoint, method, body, qs } = await buildUserRequest(
+      ({ endpoint, method, body, qs } = buildUserRequest(
         this,
         operation,
         itemIndex,
@@ -903,7 +1140,7 @@ async function executePredefinedAction(
       ));
       break;
     case "department":
-      ({ endpoint, method, body, qs } = await buildDepartmentRequest(
+      ({ endpoint, method, body, qs } = buildDepartmentRequest(
         this,
         operation,
         itemIndex,
@@ -911,7 +1148,7 @@ async function executePredefinedAction(
       ));
       break;
     case "training":
-      ({ endpoint, method, body, qs } = await buildTrainingRequest(
+      ({ endpoint, method, body, qs } = buildTrainingRequest(
         this,
         operation,
         itemIndex,
@@ -919,7 +1156,7 @@ async function executePredefinedAction(
       ));
       break;
     case "leaveType":
-      ({ endpoint, method, body, qs } = await buildLeaveTypeRequest(
+      ({ endpoint, method, body, qs } = buildLeaveTypeRequest(
         this,
         operation,
         itemIndex,
@@ -927,7 +1164,7 @@ async function executePredefinedAction(
       ));
       break;
     case "account":
-      ({ endpoint, method, body, qs } = await buildAccountRequest(
+      ({ endpoint, method, body, qs } = buildAccountRequest(
         this,
         operation,
         itemIndex,
@@ -935,7 +1172,7 @@ async function executePredefinedAction(
       ));
       break;
     case "sites":
-      ({ endpoint, method, body, qs } = await buildSitesRequest(
+      ({ endpoint, method, body, qs } = buildSitesRequest(
         this,
         operation,
         itemIndex,
@@ -943,7 +1180,55 @@ async function executePredefinedAction(
       ));
       break;
     case "license":
-      ({ endpoint, method, body, qs } = await buildLicenseRequest(
+      ({ endpoint, method, body, qs } = buildLicenseRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "attendance":
+      ({ endpoint, method, body, qs } = buildAttendanceRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "email":
+      ({ endpoint, method, body, qs } = buildEmailRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "curriculum":
+      ({ endpoint, method, body, qs } = buildCurriculumRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "file":
+      ({ endpoint, method, body, qs } = buildFileRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "payslip":
+      ({ endpoint, method, body, qs } = buildPaySlipRequest(
+        this,
+        operation,
+        itemIndex,
+        additionalFields
+      ));
+      break;
+    case "supportTool":
+      ({ endpoint, method, body, qs } = buildSupportToolRequest(
         this,
         operation,
         itemIndex,
@@ -1211,7 +1496,7 @@ function analyzeInstruction(instruction: string, context: IDataObject): any {
 }
 
 // Build request functions for each resource
-async function buildPeopleRequest(
+function buildPeopleRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1250,12 +1535,17 @@ async function buildPeopleRequest(
     case "search":
       qs = { ...additionalFields };
       break;
+    case "updatePassword":
+      method = "POST";
+      endpoint = `/people/password/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
   }
 
   return { endpoint, method, body, qs };
 }
 
-async function buildRequestRequest(
+function buildRequestRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1312,12 +1602,18 @@ async function buildRequestRequest(
       endpoint = "/request/import/overtime";
       body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
       break;
+    case "getCountWaiting":
+      qs = { get_mode: "count_total_waiting", ...additionalFields };
+      break;
+    case "getCheckin":
+      endpoint = `/request/checkin/${requestId}`;
+      break;
   }
 
   return { endpoint, method, body, qs };
 }
 
-async function buildDashboardRequest(
+function buildDashboardRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1360,7 +1656,7 @@ async function buildDashboardRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildConfigurationRequest(
+function buildConfigurationRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1407,7 +1703,7 @@ async function buildConfigurationRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildUserRequest(
+function buildUserRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1445,12 +1741,46 @@ async function buildUserRequest(
       endpoint = "/user/setting";
       body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
       break;
+    case "changeLanguage":
+      method = "POST";
+      endpoint = "/user/language";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "checkResetToken":
+      method = "GET";
+      endpoint = "/user/check/reset-password";
+      // Add token and OTP parameters from data
+      const tokenData = context.getNodeParameter(
+        "data",
+        itemIndex,
+        {}
+      ) as IDataObject;
+      endpoint = `/user/check/reset-password/${tokenData.token}/otp`;
+      if (tokenData.otp_code) {
+        qs.otp_code = tokenData.otp_code;
+      }
+      break;
+    case "resetPassword":
+      method = "POST";
+      endpoint = "/user/reset-password";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "sendResetOtp":
+      method = "POST";
+      endpoint = "/user/send-reset-otp";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "signup":
+      method = "POST";
+      endpoint = "/user/signup";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
   }
 
   return { endpoint, method, body, qs };
 }
 
-async function buildDepartmentRequest(
+function buildDepartmentRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1492,7 +1822,7 @@ async function buildDepartmentRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildTrainingRequest(
+function buildTrainingRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1536,12 +1866,16 @@ async function buildTrainingRequest(
       endpoint = "/training/enroll";
       body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
       break;
+    case "getPeopleInCourse":
+      endpoint = `/training/course/${resourceId}/people`;
+      qs = additionalFields;
+      break;
   }
 
   return { endpoint, method, body, qs };
 }
 
-async function buildLeaveTypeRequest(
+function buildLeaveTypeRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1583,7 +1917,7 @@ async function buildLeaveTypeRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildAccountRequest(
+function buildAccountRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1608,7 +1942,7 @@ async function buildAccountRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildSitesRequest(
+function buildSitesRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1650,7 +1984,7 @@ async function buildSitesRequest(
   return { endpoint, method, body, qs };
 }
 
-async function buildLicenseRequest(
+function buildLicenseRequest(
   context: IExecuteFunctions,
   operation: string,
   itemIndex: number,
@@ -1668,6 +2002,189 @@ async function buildLicenseRequest(
       break;
     case "getInfo":
       endpoint = "/license/info";
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildAttendanceRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  const endpoint = "/dashboard/get-abnormal-attendance";
+  const method: IHttpRequestMethods = "GET";
+  const body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const dateRange = context.getNodeParameter(
+    "dateRange",
+    itemIndex,
+    {}
+  ) as IDataObject;
+
+  switch (operation) {
+    case "getAbnormal":
+      qs = {
+        attendance_mode: "attendance_detail",
+        ...dateRange,
+        ...additionalFields,
+      };
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildEmailRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  const endpoint = "/request/sendmail-request";
+  const method: IHttpRequestMethods = "POST";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "sendRequest":
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildCurriculumRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/training/curriculum";
+  const method: IHttpRequestMethods = "GET";
+  const body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "getCategories":
+      endpoint = "/training/curriculum/categories";
+      break;
+    case "getCategoryDetail":
+      endpoint = `/training/curriculum/category/${resourceId}`;
+      break;
+    case "get":
+      endpoint = `/training/curriculum/${resourceId}`;
+      break;
+    case "list":
+      endpoint = "/training/curriculum";
+      qs = additionalFields;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildFileRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/file";
+  const method: IHttpRequestMethods = "POST";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "upload":
+      endpoint = "/file/upload";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "sign":
+      endpoint = "/file/sign";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildPaySlipRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/payslip";
+  let method: IHttpRequestMethods = "GET";
+  let body: IDataObject = {};
+  let qs: IDataObject = additionalFields;
+
+  const resourceId = context.getNodeParameter(
+    "resourceId",
+    itemIndex,
+    ""
+  ) as string;
+
+  switch (operation) {
+    case "confirm":
+      method = "POST";
+      endpoint = "/payslip/confirm";
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+    case "get":
+      endpoint = `/payslip/${resourceId}`;
+      break;
+    case "list":
+      qs = additionalFields;
+      break;
+    case "updatePeriod":
+      method = "PUT";
+      endpoint = `/pay-slip/period/${resourceId}`;
+      body = context.getNodeParameter("data", itemIndex, {}) as IDataObject;
+      break;
+  }
+
+  return { endpoint, method, body, qs };
+}
+
+function buildSupportToolRequest(
+  context: IExecuteFunctions,
+  operation: string,
+  itemIndex: number,
+  additionalFields: IDataObject
+) {
+  let endpoint = "/support_tool";
+  let method: IHttpRequestMethods = "PUT";
+  let body: IDataObject = {};
+  const qs: IDataObject = additionalFields;
+
+  switch (operation) {
+    case "changeFullStaff":
+      endpoint = "/support_tool/change-fullstaffs";
+      const requestData = context.getNodeParameter(
+        "data",
+        itemIndex,
+        {}
+      ) as IDataObject;
+      body = {
+        mode: "change_fullstaff_id",
+        ...requestData,
+      } as IDataObject;
+      break;
+    case "testRecalOt":
+      method = "GET";
+      endpoint = "/request/testrecalot";
       break;
   }
 
