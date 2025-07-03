@@ -8,7 +8,7 @@ import type {
   IHttpRequestMethods,
 } from "n8n-workflow";
 
-export class EzyHR implements INodeType {
+export class EzyHr implements INodeType {
   description: INodeTypeDescription = {
     displayName: "EzyHR",
     name: "ezyHr",
@@ -2408,3 +2408,6 @@ function generateSummary(results: any[]): string {
 
   return summary;
 }
+
+// เพิ่มบรรทัดนี้ที่ท้ายไฟล์ หลังจาก function generateSummary
+export default EzyHr;

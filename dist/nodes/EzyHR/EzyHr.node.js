@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EzyHR = void 0;
-class EzyHR {
+exports.EzyHr = void 0;
+class EzyHr {
     constructor() {
         this.description = {
             displayName: "EzyHR",
@@ -1051,7 +1051,7 @@ class EzyHR {
         return [returnData];
     }
 }
-exports.EzyHR = EzyHR;
+exports.EzyHr = EzyHr;
 async function executePredefinedAction(itemIndex) {
     const resource = this.getNodeParameter("resource", itemIndex);
     const operation = this.getNodeParameter("operation", itemIndex);
@@ -1934,4 +1934,5 @@ function generateSummary(results) {
     }
     return summary;
 }
+exports.default = EzyHr;
 //# sourceMappingURL=EzyHr.node.js.map
